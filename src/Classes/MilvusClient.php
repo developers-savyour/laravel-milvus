@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Classes;
+namespace Developerssavyour\LaravelMilvus\Classes;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -14,8 +14,8 @@ class MilvusClient
 
     public function __construct()
     {
-        $this->host = constants('milvus.host');
-        $this->port = constants('milvus.port');
+        $this->host = config('host');
+        $this->port = config('port');
         $this->version = '/api/v1';
         $this->client = new Client([
             'base_uri' => "http://{$this->host}:{$this->port}"
