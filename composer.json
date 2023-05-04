@@ -1,11 +1,11 @@
 {
-    "name": "developerssavyour/laravel-milvus",
+    "name": "developerssavyour/milvus",
     "description": "A package to connect milvus DB with php laravel",
     "keywords": [
         "developerssavyour",
         "laravel-milvus"
     ],
-    "homepage": "https://github.com/developerssavyour/laravel-milvus",
+    "homepage": "https://github.com/developerssavyour/milvus",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -16,9 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "guzzlehttp/guzzle": "^7.5",
-        "illuminate/support": "^8.0"
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
@@ -26,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Developerssavyour\\LaravelMilvus\\": "src"
+            "DevelopersSavyour\\Milvus\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Developerssavyour\\LaravelMilvus\\Tests\\": "tests"
+            "DevelopersSavyour\\Milvus\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Developerssavyour\\LaravelMilvus\\LaravelMilvusServiceProvider"
+                "DevelopersSavyour\\Milvus\\MilvusServiceProvider"
             ],
             "aliases": {
-                "LaravelMilvus": "Developerssavyour\\LaravelMilvus\\LaravelMilvusFacade"
+                "Milvus": "DevelopersSavyour\\Milvus\\Facades\\Milvus"
             }
         }
     }

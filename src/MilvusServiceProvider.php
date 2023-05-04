@@ -1,8 +1,7 @@
 <?php
 
-namespace Developerssavyour\LaravelMilvus\Providers;
+namespace DevelopersSavyour\Milvus;
 
-use Developerssavyour\LaravelMilvus\Classes\MilvusClient;
 use Illuminate\Support\ServiceProvider;
 
 class MilvusServiceProvider extends ServiceProvider
@@ -22,7 +21,7 @@ class MilvusServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('laravel-milvus.php'),
+                __DIR__ . '/../config/config.php' => config_path('milvus.php'),
             ], 'config');
 
             // Publishing the views.
@@ -51,11 +50,11 @@ class MilvusServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-milvus');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'milvus');
 
         // Register the main class to use with the facade
-        $this->app->singleton('laravel-milvus', function () {
-            return new MilvusClient;
+        $this->app->singleton('milvus', function () {
+            return new MilvusClient();
         });
     }
 }

@@ -1,13 +1,10 @@
 <?php
 
-namespace Developerssavyour\LaravelMilvus\Facades;
+namespace DevelopersSavyour\Milvus\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Developerssavyour\LaravelMilvus\Skeleton\SkeletonClass
- */
-class MilvusFacade extends Facade
+class Milvus extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +13,6 @@ class MilvusFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-milvus';
+        return 'milvus';
     }
 }

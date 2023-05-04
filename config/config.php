@@ -4,6 +4,6 @@
  * You can place your custom package configuration in here.
  */
 return [
-    'host' => 'localhost',
-    'port'  => 9091
+    'host' => env('MILVUS_HOST'),
+    'port'  => env('MILVUS_PORT')
 ];
