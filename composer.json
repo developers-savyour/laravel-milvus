@@ -15,9 +15,7 @@
             "role": "Developer"
         }
     ],
-    "require": {
-        "guzzlehttp/guzzle": "^7.5"
-    },
+    "require": {},
     "require-dev": {
         "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.0"
