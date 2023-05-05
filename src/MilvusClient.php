@@ -115,59 +115,6 @@ class MilvusClient
         return $this->sendRequest("POST", $path, $body);
     }
 
-    /**
-     * Creates embeddings for the specified text using the specified model.
-     *
-     * @param string|array $text The text or texts to create embeddings for.
-     * @param string $model The name of the model to use.
-     * @return array The embeddings for the text.
-     */
-    public function createEmbeddings($input, $model="text-embedding-ada-002")
-    {
-        $data = [
-            "model" =>  $model,
-            "input" =>  $input,
-        ];
-
-        $response = $this->client->post('embeddings', [
-            'headers' => [
-                'Content-Type: application/json',
-                'Authorization' => 'Bearer '.$this->apiKey,
-            ],
-            'json' => $data,
-        ]);
-
-        $result = json_decode($response->getBody(), true);
-
-        if (isset($result['data'][0]['embedding'])) {
-            return $result['data'][0]['embedding'];
-        } else {
-            throw new \RuntimeException('Failed to create embeddings: '.$result['error']);
-        }
-    }
-
-
-    public function moderation($input)
-    {
-        $data = [
-            "input" =>  $input,
-        ];
-
-        $response = $this->client->post('moderations', [
-            'headers' => [
-                'Content-Type: application/json',
-                'Authorization' => 'Bearer '.$this->apiKey,
-            ],
-            'json' => $data,
-        ]);
-
-        $result = json_decode($response->getBody(), true);
-        if ($result['results'][0]['flagged']) {
-            throw new \RuntimeException('Use of explicit language is not allowed');
-        }
-        return;
-    }
-
     protected function sendRequest($method, $path, $body = [])
     {
         $options = [
