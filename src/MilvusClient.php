@@ -53,12 +53,13 @@ class MilvusClient
         return $this->sendRequest("POST", $path, $body);
     }
 
-    public function insertData($collectionName, $data)
+    public function insertData($collectionName, $data, $numRows)
     {
-        $path = "{$this->version}/collection";
+        $path = "{$this->version}/entities";
         $body = [
             "collection_name" => $collectionName,
-            "fields_data" => $data
+            "fields_data" => $data,
+            "num_rows" => $numRows
         ];
 
         return $this->sendRequest("POST", $path, $body);
@@ -118,6 +119,10 @@ class MilvusClient
     protected function sendRequest($method, $path, $body = [])
     {
         $options = [
+            'headers' => [
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ],
             "json" => $body
         ];
 
