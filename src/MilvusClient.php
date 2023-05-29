@@ -75,6 +75,27 @@ class MilvusClient
         return $this->sendRequest("DELETE", $path, $body);
     }
 
+    public function searchQuery($collectionName, $query)
+    {
+        $path = "{$this->version}/query";
+        $body = [
+            "collection_name" => $collectionName,
+            "output_fields" => ["Id", "content", "tokens_count"],
+            "expr" => $query
+        ];
+        return $this->sendRequest("POST", $path, $body);
+    }
+
+    public function deleteEntity($collectionName, $query)
+    {
+        $path = "{$this->version}/entities";
+        $body = [
+            "collection_name" => $collectionName,
+            "expr" => "$query"
+        ];
+        return $this->sendRequest("DELETE", $path, $body);
+    }
+
     public function createIndex($collectionName, $fieldName, $extraParams)
     {
         $path = "{$this->version}/index";
