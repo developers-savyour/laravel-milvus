@@ -80,7 +80,7 @@ class MilvusClient
         $path = "{$this->version}/query";
         $body = [
             "collection_name" => $collectionName,
-            "output_fields" => ["Id", "content", "tokens_count"],
+            "output_fields" => ["id", "content", "tokens_count"],
             "expr" => $query
         ];
         return $this->sendRequest("POST", $path, $body);
