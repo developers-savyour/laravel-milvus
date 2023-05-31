@@ -75,12 +75,12 @@ class MilvusClient
         return $this->sendRequest("DELETE", $path, $body);
     }
 
-    public function searchQuery($collectionName, $query)
+    public function searchQuery($collectionName, $query, $outputFields)
     {
         $path = "{$this->version}/query";
         $body = [
             "collection_name" => $collectionName,
-            "output_fields" => ["id", "content", "tokens_count"],
+            "output_fields" => $outputFields,
             "expr" => $query
         ];
         return $this->sendRequest("POST", $path, $body);
